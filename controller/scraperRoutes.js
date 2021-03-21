@@ -15,6 +15,7 @@ res.status(201).json({results});
 exports.getApi = async (req,res,next) => {
  const value =  await Sequence.find({})
  console.log(value)
+ res.status(201).json({results});
 }
 
 

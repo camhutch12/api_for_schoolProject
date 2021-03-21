@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const Sequence = require('./models/sequences');
 // app.use(BodyParser.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 console.log(PORT);
 const dbUrl = process.env.DB_URL;
 console.log(dbUrl)
@@ -26,8 +26,8 @@ db.once('open', () =>{
 
 
 const app = express();
-app.use('/feed',scrapeRoutes);
 app.use(BodyParser.json()) // good for application/json 
+app.use('/feed',scrapeRoutes);
 app.listen(PORT,() =>{
-    console.log("Connection To Server OPened");
+    console.log("Connection To Server OPened" + PORT);
 });
