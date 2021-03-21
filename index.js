@@ -3,10 +3,7 @@ const puppeteer = require('puppeteer');
 exports.getScape = async (title) => {
 
   const browser = await puppeteer.launch({
-    headless: true,
-
-  }
-    );
+    headless: true,});
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 800 });
   await page.goto('https://customlightcreations.com');

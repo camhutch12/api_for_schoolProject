@@ -1,21 +1,20 @@
+
+const Sequence = require('../models/sequences');
 const puppeteer = require('puppeteer');
 const index = require('../index');
-
-exports.postApi = (req,res,next) => {
+exports.postApi = async (req,res,next) => {
+  console.log("Post Request Entered")
   const title = req.body.title;
-index.getScape(title).then((data) => {
-  console.log(data);
-  res.status(201).json({
-    title:data,
-  });
-}).catch(err => console.log(err));
+
+const results = await Sequence.find({title:new RegExp(title,'i')});
+console.log(results)
+res.status(201).json({results});
+
 }
 
-exports.getApi = (req,res,next) => {
-  index.getScape().then((data) => {
-    console.log(data);
-    res.status(200).json({data:data});
-  });
+exports.getApi = async (req,res,next) => {
+ const value =  await Sequence.find({})
+ console.log(value)
 }
 
 
