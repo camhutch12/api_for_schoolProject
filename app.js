@@ -7,6 +7,7 @@ if(process.env.NODE_ENV !== "production"){
 const express = require('express');
 const BodyParser = require('body-parser');
 const scrapeRoutes = require('./routes/scaperRoutes');
+const emailRoutes = require('./routes/emailRoute')
 const mongoose = require('mongoose');
 const Sequence = require('./models/sequences');
 // app.use(BodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,7 @@ db.once('open', () =>{
 const app = express();
 app.use(BodyParser.json()) // good for application/json 
 app.use('/feed',scrapeRoutes);
+app.use('/xmail',emailRoutes);
 app.listen(PORT,() =>{
     console.log("Connection To Server OPened" + PORT);
 });
